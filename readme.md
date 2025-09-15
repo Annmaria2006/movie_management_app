@@ -1,1 +1,1 @@
-# movie management app
+# A simple movie management application for adding, deleting and updating movies.

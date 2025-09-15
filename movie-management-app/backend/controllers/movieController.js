@@ -1,9 +1,7 @@
-// backend/controllers/movieController.js
+
 const Movie = require('../models/Movie');
 
-// @desc    Get all movies
-// @route   GET /api/movies
-// @access  Public
+// Get all movies
 const getMovies = async (req, res) => {
     try {
         const movies = await Movie.find({});
@@ -13,9 +11,8 @@ const getMovies = async (req, res) => {
     }
 };
 
-// @desc    Add a new movie
-// @route   POST /api/movies
-// @access  Public
+//    Add a new movie
+
 const addMovie = async (req, res) => {
     const { movieID, title, director, releaseYear, genre, rating } = req.body;
 
@@ -45,18 +42,17 @@ const addMovie = async (req, res) => {
     }
 };
 
-// @desc    Update a movie
-// @route   PUT /api/movies/:id
-// @access  Public
+//    Update a movie
+
 const updateMovie = async (req, res) => {
-    const { id } = req.params; // Using movieID as :id in the route
+    const { id } = req.params; 
     const { title, director, releaseYear, genre, rating } = req.body;
 
     try {
         const movie = await Movie.findOneAndUpdate(
             { movieID: id }, // Find by movieID
             { title, director, releaseYear, genre, rating },
-            { new: true, runValidators: true } // Return the updated document and run schema validators
+            { new: true, runValidators: true } 
         );
 
         if (!movie) {
@@ -69,9 +65,8 @@ const updateMovie = async (req, res) => {
     }
 };
 
-// @desc    Delete a movie
-// @route   DELETE /api/movies/:id
-// @access  Public
+//    Delete a movie
+
 const deleteMovie = async (req, res) => {
     const { id } = req.params; // Using movieID as :id in the route
 
